@@ -151,11 +151,7 @@ const Header = () => {
 
     const userLabel = currentUser ? (currentUser.name || currentUser.user) : 'Đăng nhập';
 
-    const coffeeMenuItems = [
-        { text: 'Hành trình tách cà phê đậm', href: '/coffee/hanh-trinh-tach-ca-phe' },
-        { text: 'Hạt cà phê Phúc Long', href: '/coffee/hat-ca-phe-phuc-long' },
-        { text: 'Nghệ thuật pha chế', href: '/coffee/nghe-thuat-pha-che' }
-    ];
+
 
     return (
         <header className="phuclong-header">
@@ -340,15 +336,6 @@ const Header = () => {
                 <div className="nav-content">
                     <a href="/" className="nav-link">TRANG CHỦ</a>
 
-                    {/* CÀ PHÊ với Dropdown */}
-                    <div
-                        className="nav-item-with-dropdown"
-                        onMouseEnter={() => setHoveredMenu('coffee')}
-                        onMouseLeave={() => setHoveredMenu(null)}
-                    >
-                        <a href="/coffee" className={`nav-link ${hoveredMenu === 'coffee' ? 'active' : ''}`}>
-                            CÀ PHÊ
-                        </a>
                         {hoveredMenu === 'coffee' && (
                             <div className="dropdown-menu">
                                 {coffeeMenuItems.map((item, index) => (
