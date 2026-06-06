@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './Banner.css';
-import ban1Image from '../../img/ban1.png';
-import ban2Image from '../../img/ban2.png';
+import ban1Image from '../../img/ban1.jpg';
+import ban2Image from '../../img/ban2.jpg';
+import ban3Image from '../../img/ban3.jpg';
+import ban4Image from '../../img/ban4.jpg';
 
 const Banner = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const banners = [ban1Image, ban2Image];
-
+    const banners = [
+    ban1Image,
+    ban2Image,
+    ban3Image,
+    ban4Image
+];
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) =>
                 (prevIndex + 1) % banners.length
             );
-        }, 10000); // Chuyển đổi mỗi 5 giây
+        }, 4000); // Chuyển đổi mỗi 4 giây
 
         return () => clearInterval(interval);
     }, [banners.length]);

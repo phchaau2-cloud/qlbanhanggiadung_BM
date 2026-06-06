@@ -10,6 +10,10 @@ import Login from "./components/Pages/Login";
 import Profile from "./components/Pages/Profile";
 import Signup from "./components/Pages/Signup";
 import Admin from './components/Pages/Admin';
+import Popup from './components/Popup/Popup';
+import Banner from './components/Banner/Banner';
+import FlashSale from './components/FlashSale/FlashSale';
+
 
 function App() {
   const location = useLocation();
@@ -20,12 +24,17 @@ function App() {
 
   return (
     <>
+
+
       {!hideChrome && <Header />}
       <Routes>
         <Route
           path="/"
           element={
             <>
+              <Popup />
+              <Banner />
+              <FlashSale />
               <ProductList />
             </>
           }

@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "user": "admin",
+    "user": "Chou",
     "pass": "123",
     "name": "Quản trị viên",
     "role": "staff"
   },
   {
     "id": 2,
-    "user": "khachhang@gmail.com",
-    "pass": "123456",
+    "user": "user1",
+    "pass": "1234",
     "name": "Nguyễn Văn A",
     "role": "customer"
   },

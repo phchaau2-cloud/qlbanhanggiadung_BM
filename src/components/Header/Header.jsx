@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import logoImage from '../../img/logo.jpg'; // Giữ nguyên đường dẫn logo của bạn
+import { imageMap } from '../../utils/ProductImages';
 
 const jsonBase = import.meta.env.BASE_URL || '/';
 
@@ -89,8 +90,12 @@ const Header = () => {
                 const data = await res.json();
                 if (cancelled) return;
                 
-                // Giữ nguyên đường dẫn ảnh gốc trong file JSON của bạn, không qua hàm map của thầy nữa
-                setProducts(data);
+                // Map imageKey thành đường dẫn ảnh thực từ imageMap
+                const mappedProducts = data.map((item) => ({
+                    ...item,
+                    image: imageMap[item.imageKey] || item.image
+                }));
+                setProducts(mappedProducts);
             } catch (err) {
                 console.error('Lỗi tải sản phẩm cho tìm kiếm:', err);
             }
@@ -162,7 +167,7 @@ const Header = () => {
                     <div className="header-delivery-info">
                         <span className="delivery-text">CHOU HOUSE</span>
                         <i className="fas fa-phone delivery-icon"></i>
-                        <span className="delivery-phone">0908633495</span>
+                        <span className="delivery-phone">0908 633 495</span>
                         <div className="delivery-scooter">
                             <i className="fas fa-motorcycle"></i>
                         </div>
@@ -335,28 +340,13 @@ const Header = () => {
             <nav className="header-navigation" aria-label="Điều hướng chính">
                 <div className="nav-content">
                     <a href="/" className="nav-link">TRANG CHỦ</a>
-
-                        {hoveredMenu === 'coffee' && (
-                            <div className="dropdown-menu">
-                                {coffeeMenuItems.map((item, index) => (
-                                    <a
-                                        key={index}
-                                        href={item.href}
-                                        className="dropdown-item"
-                                    >
-                                        {item.text}
-                                    </a>
-                                ))}
-                            </div>
-                        )}
-                    </div>
                     {/* Toàn bộ menu gốc của bạn được giữ lại nguyên vẹn */}
-                    <a href="/tat-ca-san-pham" className="nav-link">SẢN PHẨM HOT</a>
-                    <a href="/ao" className="nav-link">ĐIỆN LẠNH</a>
-                    <a href="/quan" className="nav-link">DANH MỤC</a>
-                    <a href="/phu-kien" className="nav-link">VIỆT - NHẬT</a>
-                    <a href="/khuyen-mai" className="nav-link">KHUYẾN MÃI</a>
-                    <a href="/ve-chung-toi" className="nav-link">VỀ CHÚNG TÔI</a>
+                    <a href="/tat-ca-san-pham" className="nav-link">SẢN PHẨM</a>
+                    <a href="/ao" className="nav-link">Gia dụng nhà bếp</a>
+                    <a href="/quan" className="nav-link">Điện gia dụng</a>
+                    <a href="/phu-kien" className="nav-link">Khuyến mãi</a>
+                    <a href="/khuyen-mai" className="nav-link">Tin tức</a>
+                    <a href="/ve-chung-toi" className="nav-link">Liên hệ</a>
                 </div>
             </nav>
         </header>

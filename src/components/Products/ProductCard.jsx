@@ -61,9 +61,14 @@ const ProductCard = ({ product }) => {
         <span className="sales">Đã bán {product.sold}</span>
       </div>
 
-      <button className="compare-button" onClick={handleBuy} disabled={isLoading}>
-        {isLoading ? 'Đang mở...' : 'Mua'}
-      </button>
+      <div className="product-actions-group">
+        <button className="compare-button" onClick={handleBuy} disabled={isLoading}>
+          {isLoading ? 'Đang mở...' : 'Mua Ngay'}
+        </button>
+        <button className="add-to-cart-button">
+          Thêm vào giỏ hàng
+        </button>
+      </div>
       {error && <div className="error-text">{error}</div>}
     </div>
   );
